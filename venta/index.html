@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALBIWEB - Materiales de Construcción</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><i class="bx bx-hard-hat"></i><span class="gris">ALBIWEB</span></a>
+        
+        <ul class="navlist">
+            <li><a href="#" class="active">Inicio</a></li>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="nav-icons">
+            <a href="#"><i class="bx bx-search"></i></a>
+            <a href="#" class="cart-icon"><i class="bx bx-cart"></i><span class="cart-count">0</span></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <!-- Sección Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Materiales de Construcción de Calidad</h1>
+            <p>Encuentra todo lo que necesitas para tu proyecto de construcción</p>
+            <a href="#productos" class="btn">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- Sección Categorías -->
+    <section class="categories" id="categorias">
+        <h2 class="section-title">Nuestras Categorías</h2>
+        <div class="categories-container">
+            <div class="category-card">
+                <img src="img/cemento.jpg" alt="Materiales Básicos">
+                <h3>Materiales Básicos</h3>
+            </div>
+            <div class="category-card">
+                <img src="img/herramientas.jpg" alt="Herramientas">
+                <h3>Herramientas</h3>
+            </div>
+            <div class="category-card">
+                <img src="img/electricos.jpg" alt="Eléctricos">
+                <h3>Eléctricos</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Productos Destacados -->
+    <section class="products" id="productos">
+        <h2 class="section-title">Productos Destacados</h2>
+        <div class="products-grid">
+            <!-- Productos se llenarán con JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>ALBIWEB</h4>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><i class='bx bx-map'></i> Tuluá, Colombia</li>
+                    <li><i class='bx bx-phone'></i> +57 321 123 4567</li>
+                    <li><i class='bx bx-envelope'></i> info@albiweb.com</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrito de Compras -->
+    <div class="cart-modal">
+        <form action="menuP.html" method="get"></form>
+        <div class="cart-content">
+            <span class="close-cart">&times;</span>
+            <h2>Tu Carrito</h2>
+            <div class="cart-items"></div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price">$0 COP</span>
+            </div>
+            <button class="checkout-btn">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <script src="Cta.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>
