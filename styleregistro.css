@@ -1,13 +1,28 @@
 /* General */
 body {
     font-family: Arial, sans-serif;
-    background-color: #ff9696;
+   
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     background-image:url(fondoregistro.webp);
+
+}
+.form-group {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    justify-content: space-between; /* Espacia etiqueta e input */
+}
+.form-group label {
+    width: 30%; /* Ajusta según necesidad */
+    text-align: left;
+}
+
+.form-group input,
+.form-group select {
+    width: 65%;
 }
 
 /* Caja principal */

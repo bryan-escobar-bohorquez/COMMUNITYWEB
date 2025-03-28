@@ -8,7 +8,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    background-color: #808080;
+    background-color: #d5d5d5;
     text-decoration: none; /* 🔹 Elimina el subrayado */
 }
 
@@ -159,7 +159,7 @@ h1 {
     display: block;
     text-align: center;
     margin: 20px auto;
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
     font-size: 16px;
 }
@@ -168,13 +168,13 @@ h1 {
     text-decoration: underline;
 }
 /* Barra de contacto en la parte inferior */
-/* Barra de contacto en la parte inferior */
+
 .barraDeContacto {
-    
+    font-weight: bold;
     bottom: 0; /* Pegada a la parte inferior */
     width: 100%; /* Ocupar todo el ancho */
-    background-color: #000000; /* Fondo negro */
-    color: #ffffff; /* Texto en blanco */
+    background-color: #656565; /* Fondo negro */
+    color: #000000; /* Texto en blanco */
     padding: 15px 20px; /* Espaciado interno */
     display: flex; /* Diseño flexible */
     justify-content: space-between; /* Espaciado entre los elementos */
