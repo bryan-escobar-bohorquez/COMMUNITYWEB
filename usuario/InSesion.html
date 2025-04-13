@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styleINS.css">
+    <link rel="icon" href="logosinfondo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albiweb - Inicio o registro</title>
+</head>
+<body>
+    <div class="box">
+        <form id="loginForm">
+            <!-- Usuario -->
+            <input type="text" id="email" name="email" placeholder="Email" required>
+
+            <!-- Contraseña -->
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+
+            <!-- Botón para iniciar sesión -->
+          <input type="submit" value="Iniciar sesión" class="iniciar-sesion">
+            
+        </form>
+
+        <!-- Enlace para "¿Olvidaste tu contraseña?" -->
+        <a href="recuperar.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+
+        <!-- Línea de separación -->
+        <hr>
+
+        <!-- Botón para registrarse -->
+        <form action="registro.html" method="get">
+            <input type="submit" value="Registrarte" class="registro">
+        </form>
+
+      
+        <script>document.getElementById("loginForm").addEventListener("submit", async (e) => {
+          e.preventDefault();
+          
+          const credenciales = {
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value
+          };
+        
+          try {
+            const respuesta = await fetch('http://localhost:5000/api/auth/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(credenciales)
+            });
+        
+            const datos = await respuesta.json();
+            
+            if (!respuesta.ok) {
+              throw new Error(datos.mensaje || 'Error al iniciar sesión');
+            }
+        
+            // Guardar token y redirigir
+            localStorage.setItem('token', datos.token);
+            localStorage.setItem('usuario', JSON.stringify(datos.usuario));
+            window.location.href = ".../menuPrincipal/menuPiteractivo.html";
+            
+          } catch (error) {
+            alert(error.message);
+          }
+        });</script>
+    </div>
+
+
+</body>
+</html>
