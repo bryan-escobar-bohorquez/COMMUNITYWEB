@@ -1,0 +1,170 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    text-decoration: none; /* 🔹 Elimina el subrayado */
+}
+
+/* Barra de navegación */
+.barraC {
+    background-color: #0913db;
+    width: 100%;
+    padding: 12px 25px;  /* Más relleno para mejor apariencia */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;  /* Espaciado uniforme */
+}
+
+/* Logo y nombre */
+.logo-nombre {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 8px;
+}
+
+.nombre {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nombre:hover {
+    background-color: white;
+    color: #0913db;
+    transform: scale(1.05);
+}
+
+/* Enlaces de navegación */
+.nav-links {
+    display: flex;
+    gap: 15px;  /* Espaciado uniforme entre enlaces */
+}
+
+.nav-links a {
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    background-color: white;
+    color: #0913db;
+    transform: scale(1.05);
+}
+
+/* Contenido principal */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Barra de búsqueda */
+.barra-busqueda {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.campo-busqueda {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 25px;
+}
+
+.boton-busqueda {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.boton-busqueda:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Servicios */
+.servicio {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+.servicio h3 {
+    color: #555;
+    margin-top: 0;
+}
+
+.precio {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+.contactar {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.contactar:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Enlace de Instagram */
+.instagram-link {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    color: #3498db;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.instagram-link:hover {
+    text-decoration: underline;
+}
+
+

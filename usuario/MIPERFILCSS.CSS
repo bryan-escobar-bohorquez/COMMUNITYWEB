@@ -1,0 +1,156 @@
+/* 🎨 Reset básico para evitar estilos por defecto del navegador */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f9fa; /* Color de fondo gris claro */
+}
+/* 📌 Barra de navegación */
+.navbar {
+    background-color: #333; /* Fondo oscuro */
+    display: flex; /* Organiza los elementos en fila */
+    justify-content: center; /* Centra los enlaces */
+    padding: 10px 20px; /* Espaciado interno */
+}
+
+.navbar a {
+    color: white; /* Texto en blanco */
+    text-decoration: none; /* Quita el subrayado */
+    padding: 10px 20px; /* Espaciado interno */
+    transition: background 0.3s ease; /* Efecto de transición suave */
+}
+/* 🎨 Efecto hover en los enlaces */
+.navbar a:hover {
+    background-color: #575757; /* Cambia de color al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* 🖼️ Estilos para la foto de portada */
+.portada img {
+    width: 100%; /* Ocupar todo el ancho de la pantalla */
+    height: 350px; /* Altura fija */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+}
+
+
+/* 👤 Sección del perfil */
+/* 📌 Ajustamos el perfil para que suba sobre la portada */
+/* Ajustamos el contenedor del perfil */
+.perfil-container {
+    position: relative;
+    margin: -50px auto 20px auto;
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Permite alinear imagen y texto en fila */
+    align-items: center; /* Centra verticalmente la imagen con el texto */
+    gap: 20px; /* Espacio entre la imagen y el texto */
+}
+
+/* Ajustamos la imagen para que sea más grande */
+.perfil-foto {
+    width: 200px;  /* Aumentamos el tamaño */
+    height: 200px; /* Hacemos que sea un círculo más grande */
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Ajustamos el texto */
+.perfil-info {
+    flex: 1; /* Hace que el texto ocupe todo el espacio restante */
+}
+
+.perfil-info h1 {
+    margin: 0;
+    font-size: 28px; /* Hacemos el nombre más grande */
+}
+
+.perfil-info p {
+    font-size: 18px;
+    color: #555;
+}
+
+
+/* ℹ️ Sección de información personal */
+.descripción {
+    background: white; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    max-width: 400px; /* Ancho máximo */
+    margin: 20px auto; /* Centrar en la página */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para efecto de tarjeta */
+}
+
+/* 🏷️ Título de la sección de información */
+.descripción h2 {
+    text-align: center; /* Centrar el texto */
+    color: #333; /* Color oscuro */
+}
+
+/* 📋 Lista de información personal */
+.descripción ul {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0; /* Elimina el padding por defecto */
+}
+
+/* 📌 Elementos de la lista */
+.descripción li {
+    background: #f4f4f4; /* Fondo gris claro */
+    margin: 8px 0; /* Espaciado entre ítems */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    color: #333; /* Color de texto oscuro */
+    text-align: center; /* Centrar el texto */
+}
+
+/* 🖼️ Galería de fotos */
+.galeria {
+    max-width: 800px; /* Ancho máximo */
+    margin: 20px auto; /* Centrar en la página */
+    text-align: center; /* Centrar el contenido */
+}
+
+/* 📌 Título de la galería */
+.galeria h2 {
+    color: #333; /* Color oscuro */
+}
+
+/* 📷 Contenedor de las imágenes */
+.fotos {
+    display: flex; /* Alinear imágenes en fila */
+    justify-content: center; /* Centrar imágenes */
+    gap: 10px; /* Espaciado entre imágenes */
+}
+
+/* 📸 Estilos de las imágenes en la galería */
+.fotos img {
+    width: 250px; /* Tamaño fijo */
+    height: 2
+    50px;
+    border-radius: 10px; /* Bordes redondeados */
+    object-fit: cover; /* Ajustar imagen sin distorsión */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: transform 0.3s ease; /* Efecto de animación */
+}
+
+/* 🖱️ Efecto hover en las imágenes */
+.fotos img:hover {
+    transform: scale(1.1); /* Aumentar tamaño al pasar el mouse */
+}
+
+
+.contacto {
+    display: flex;  /* Activa el modelo de caja flexible */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Alinea los elementos verticalmente */
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    gap: 50px; /* Espaciado entre elementos */
+}
+
+
+
