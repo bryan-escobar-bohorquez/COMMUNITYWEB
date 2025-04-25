@@ -1,5 +1,7 @@
 /* Estilos generales */
 body {
+    transform: scale(0.96); /* 90% del tamaño original */
+    transform-origin: top center;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -8,13 +10,32 @@ body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #d5d5d5;
     text-decoration: none; /* 🔹 Elimina el subrayado */
 }
+/*servicios*/
+.titulo {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.titulo .negro {
+    color: #000000;
+}
+
+.titulo .naranja {
+    color: #f4a431;
+}
+
+
 
 /* Barra de navegación */
 .barraC {
-    background-color: #0913db;
+    background-color: #ffffff;
     width: 100%;
     padding: 12px 25px;  /* Más relleno para mejor apariencia */
     display: flex;
@@ -35,7 +56,7 @@ body {
 }
 
 .nombre {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 22px;
     font-weight: bold;
     padding: 6px 10px;
@@ -44,8 +65,8 @@ body {
 }
 
 .nombre:hover {
-    background-color: white;
-    color: #0913db;
+    background-color: rgb(221, 15, 15);
+    color: #db8009;
     transform: scale(1.05);
 }
 
@@ -56,18 +77,18 @@ body {
 }
 
 .nav-links a {
-    background-color: transparent;
-    color: white;
+    background-color: #fab47b;
+    color: rgb(0, 0, 0);
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 25px;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
 }
 
 .nav-links a:hover {
-    background-color: white;
-    color: #0913db;
-    transform: scale(1.05);
+    background-color: rgb(245, 130, 22);
+    color: #000000;
+    transform: scale(1.1);
 }
 
 /* Contenido principal */
@@ -84,25 +105,25 @@ h1 {
     background-color: #fff;
     border-radius: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 4px 10px;
     width: 90%;
-    max-width: 500px;
+    max-width: 800px;
     margin: 20px auto;
 }
 
 .campo-busqueda {
     border: none;
     outline: none;
-    padding: 10px;
-    font-size: 16px;
+    padding: 19px;
+    font-size: 12px;
     width: 100%;
     border-radius: 25px;
 }
 
 .boton-busqueda {
-    background-color: #3498db;
+    background-color: #ff7300;
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
@@ -112,44 +133,72 @@ h1 {
 }
 
 .boton-busqueda:hover {
-    background-color: #2980b9;
+    background-color: #ff7300;
     transform: scale(1.1);
 }
 
-/* Servicios */
-.servicio {
-    background-color: #fff;
+/* Contenedor de tarjetas */
+.contenedor-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espacio entre tarjetas */
     margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
+    max-width: 1000px; /* Tamaño máximo del contenedor */
+    padding: 0 20px;
 }
 
-.servicio h3 {
-    color: #555;
-    margin-top: 0;
+/* Tarjeta de servicio */
+.servicio {
+    background-color: #fff;
+    padding: 2px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 45%; /* 2 tarjetas por fila con espacio */
+    box-sizing: border-box;
+    margin-bottom: 25px; /* ← Aumenta este valor para más espacio vertical */
+}
+.servicio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.servicio-icono {
+    width: 90px; /* Puedes ajustar el tamaño */
+    height: 90px;
+    
+    object-fit: cover;   /* Ajusta la imagen sin deformarla */
+    border-radius: 50%;  /* 🔸 Hace la imagen completamente redonda */
+    border: 2px solid #db8709; /* Opcional: borde naranja bonito */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicio-icono:hover {
+    transform: scale(1.1); /* agranda un poco */
+    box-shadow: 0 0 10px rgba(255, 72, 0, 0.3); /* sombra suave */
 }
 
 .precio {
     font-weight: bold;
-    color: #27ae60;
+    color: #ff951d;
 }
 
 .contactar {
-    background-color: #3498db;
+    background-color: #353330;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 2px 70px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 30px;
     transition: all 0.3s ease-in-out;
+    display: block;            /* Para poder usar margin auto */
+    margin: 20px auto 0 auto;  /* Centrado horizontal */
 }
 
 .contactar:hover {
-    background-color: #2980b9;
+    background-color: #353330;
     transform: scale(1.1);
 }
 

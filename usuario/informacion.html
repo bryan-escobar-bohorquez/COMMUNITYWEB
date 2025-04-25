@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brayan Escobar - Perfil Profesional</title>
+    <link rel="stylesheet" href="informacion.css">
+    <link rel="stylesheet" href="documentos.css">
+    <script src="informacion.js"></script>
+    
+    <script src="documentos.js"></script>
+</head>
+<body>
+    <!-- Barra de navegación fija -->
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="miperfil.html" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="#informacion" class="nav-link">Información</a></li>
+            <li class="nav-item"><a href="#proyectos" class="nav-link">Proyectos</a></li>
+            <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <!-- Sección de Inicio/Header -->
+        <header id="inicio" class="header-section">
+            <h1 id="profile-name" class="editable-field">Brayan Escobar</h1>
+            <p id="profile-location" class="location editable-field">Andalucía</p>
+            <div class="contact-info">
+                <p id="profile-email" class="editable-field"><span class="icon">✉</span> be28085@gmail.com</p>
+                <p id="profile-phone" class="editable-field"><span class="icon">📱</span> +57-3145111307</p>
+            </div>
+        </header>
+
+        <!-- Sección de Información Personal -->
+        <section id="informacion" class="content-section">
+            <h2>Perfil Profesional</h2>
+            <p id="profile-title" class="editable-field">Estudiante de Ingeniería en Sistemas</p>
+            <p id="profile-description" class="editable-field">Soy una persona muy cumplida con mi horario y educada, actualmente soy estudiante de Ingeniería en Sistemas.</p>
+        </section>
+
+        <!-- Sección de Experiencia -->
+        <section id="proyectos" class="content-section">
+            <h2>Experiencia Profesional</h2>
+            <div class="experience-item" id="experiences-container">
+                <!-- Las experiencias se añadirán aquí dinámicamente -->
+                <div class="add-new">
+                    <button id="add-exp-btn" class="btn-primary">+ Añadir experiencia</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Educación -->
+        <section class="content-section">
+            <h2>Estudios</h2>
+            <div class="education-item" id="education-container">
+                <div class="education-entry editable-field">
+                    <p class="institution">Univalle</p>
+                    <p class="date-range">Agosto 2021 - Actualmente</p>
+                    <p class="degree">Ingeniería en Sistemas</p>
+                </div>
+                <div class="add-new">
+                    <button id="add-edu-btn" class="btn-primary">+ Añadir estudio</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Idiomas -->
+        <section class="languages-section">
+            <h2>Idiomas</h2>
+            
+            <div id="languages-container" class="languages-container">
+                <div class="language-card">
+                    <div class="language-info">
+                        <span class="language-name">Español</span>
+                        <span class="language-level">Nativo</span>
+                    </div>
+                    <button class="remove-language">×</button>
+                </div>
+            </div>
+            
+            <div class="add-language-form">
+                <div class="form-group">
+                    <label for="language-select">Selecciona un idioma:</label>
+                    <select id="language-select" class="form-control">
+                        <option value="">-- Seleccione --</option>
+                        <option value="Español">Español</option>
+                        <option value="Inglés">Inglés</option>
+                        <option value="Francés">Francés</option>
+                        <option value="Alemán">Alemán</option>
+                        <option value="Portugués">Portugués</option>
+                        <option value="Italiano">Italiano</option>
+                        <option value="Chino Mandarín">Chino Mandarín</option>
+                        <option value="Japonés">Japonés</option>
+                        <option value="Árabe">Árabe</option>
+                        <option value="Ruso">Ruso</option>
+                    </select>
+                </div>
+                
+                <div id="level-container" class="level-container" style="display: none;">
+                    <p>Selecciona tu nivel:</p>
+                    <!-- Los radio buttons aparecerán aquí dinámicamente -->
+                </div>
+                
+                <button id="add-language-btn" class="btn-primary">Añadir Idioma</button>
+            </div>
+        </section>
+
+       <!-- Sección de Habilidades -->
+<div class="skills-section">
+    <h3>Conocimientos y habilidades</h3>
+    <div class="skills-container" id="skills-container"></div>
+    <div class="skill-input-container">
+        <input type="text" id="skill-input" placeholder="Añadir nueva habilidad">
+        <button id="add-skill-btn">+</button>
+    </div>
+</div>
+
+<!-- Sección de Disponibilidad -->
+<div class="availability-section">
+    <h3>Disponibilidad</h3>
+    <div class="availability-option">
+        <input type="checkbox" id="travel">
+        <label for="travel">Disponibilidad para viajar</label>
+    </div>
+    <div class="availability-option">
+        <input type="checkbox" id="relocate">
+        <label for="relocate">Disponibilidad para cambiar de residencia</label>
+    </div>
+    <div class="availability-option">
+        <input type="checkbox" id="vehicle">
+        <label for="vehicle">Vehículo propio</label>
+    </div>
+</div>
+
+<!-- Sección de Documentos -->
+<div class="documents-section">
+    <h3>Documentos</h3>
+    <div class="documents-list"></div>
+    <label for="document-upload" class="upload-btn">Subir documento</label>
+    <input type="file" id="document-upload" accept=".pdf">
+</div>
+
+        <!-- Barra de progreso -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" style="width: 74%;"></div>
+            </div>
+            <p>Perfil completado al 74%</p>
+        </div>
+    </div>
+</body>
+</html>

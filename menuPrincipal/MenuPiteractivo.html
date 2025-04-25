@@ -5,60 +5,100 @@
     <link rel="icon" href="logosinfondo.png" sizes="64x64">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="nuesTra.css">
-    <link rel="stylesheet" href="MenuPiteractivoCss.Css">
+    <link rel="stylesheet" href="MenuPiteractivo.css">
     <title>Albiweb</title>
 </head>
-<body>  
+<body>
+
     <!-- Barra de navegación -->
-    <div class="barraC">
+    <header class="barraC">
         <div class="logo-nombre">
-            <img src="logoicon.jpg" alt="Logo" class="logo" >
-            <a href="MenuPiteractivo.html" class="nombre",></a>
+            <img src="logoicon.jpg" alt="Logo de Albiweb" class="logo">
         </div>
-        <div class="nav-links">
-            
-            <a href="catalogo.html">Catalogo</a>
-            <a href="MIPERFIL.HTML">Mi perfil</a>
-        </div>
-    </div>
+        <nav class="nav-links">
+            <a href="MenuPiteractivo.html" class="activo">Personal</a>
+            <a href="oferta.html">Ofertas</a>
+            <a href="../venta/catalogo.html">Catálogo</a>
+            <a href="../usuario/MIPERFIL.HTML">Mi perfil</a>
+        </nav>
+    </header>
 
-    <!-- Contenido principal -->
-    <h1>Servicios</h1>
-    
-    <!-- Barra de búsqueda -->
-    <div class="barra-busqueda">
-        <input type="text" placeholder="Buscar servicio..." class="campo-busqueda">
-        <button type="submit" class="boton-busqueda">Buscar</button>
-    </div>
+    <!-- Contenedor principal -->
+    <main class="contenedor-principal">
 
-    <div class="servicio">
-        <h3>Albañil</h3>
-        <p>Servicios de albañilería para construcciones y remodelaciones.</p>
-        <p class="precio">$20/hora</p>
-        <button class="contactar">Contactar</button>
-    </div>
+        <!-- Barra de búsqueda -->
+        <section class="contenedor-barra">
+            <h1 class="titulo">
+                <span class="negro">Serv</span><span class="naranja">icios</span>
+            </h1>
+            <div class="barra-busqueda">
+                <input type="text" id="campo-busqueda" placeholder="Buscar servicio..." class="campo-busqueda">
+                <button type="submit" class="boton-busqueda">Buscar</button>
+            </div>
+        </section>
 
-    <div class="servicio">
-        <h3>Electricista</h3>
-        <p>Instalaciones y reparaciones eléctricas residenciales e industriales.</p>
-        <p class="precio">$25/hora</p>
-        <button class="contactar">Contactar</button>
-    </div>
+        <!-- Servicios disponibles -->
+        <section class="contenedor-servicios">
+            <article class="servicio">
+                <div class="servicio-header">
+                    <h3>Albañil</h3>
+                    <img src="/usuario/personaa1.png" alt="Imagen de un albañil" class="servicio-icono">
+                </div>
+                <p>Servicios de albañilería para construcciones y remodelaciones.</p>
+                <p class="precio">$25/hora</p>
+                <a href="MIPERFIL.HTML" class="contactar-link">
+                    <button class="contactar">Ir al perfil</button>
+                </a>
+            </article>
 
-    <div class="servicio">
-        <h3>Plomero</h3>
-        <p>Reparaciones e instalaciones de fontanería para hogares y negocios.</p>
-        <p class="precio">$22/hora</p>
-        <button class="contactar">Contactar</button>
-    </div>
+            <article class="servicio">
+                <div class="servicio-header">
+                    <h3>Electricista</h3>
+                    <img src="/usuario/persona2.png" alt="Imagen de un electricista" class="servicio-icono">
+                </div>
+                <p>Instalaciones y reparaciones eléctricas residenciales e industriales.</p>
+                <p class="precio">$25/hora</p>
+                <a href="MIPERFIL.HTML" class="contactar-link">
+                    <button class="contactar">Ir al perfil</button>
+                </a>
+            </article>
 
+            <article class="servicio">
+                <div class="servicio-header">
+                    <h3>Plomero</h3>
+                    <img src="/usuario/persona3.png" alt="Imagen de un plomero" class="servicio-icono">
+                </div>
+                <p>Reparaciones e instalaciones de fontanería para hogares y negocios.</p>
+                <p class="precio">$22/hora</p>
+                <a href="MIPERFIL.HTML" class="contactar-link">
+                    <button class="contactar">Ir al perfil</button>
+                </a>
+            </article>
 
-    <div class="barraDeContacto">
-        <a href="https://www.instagram.com/" target="_blank" class="instagram-link"> Visítanos en Instagram</a>
-        <span class="soporte"> Soporte: +1 234 567 890</span>
-    </div>
+            <article class="servicio">
+                <div class="servicio-header">
+                    <h3>Decorador</h3>
+                    <img src="/usuario/persona4.png" alt="Imagen de un decorador de interiores" class="servicio-icono">
+                </div>
+                <p>Experto en el diseño exclusivo de interiores para tu hogar.</p>
+                <p class="precio">$25/hora</p>
+                <a href="MIPERFIL.HTML" class="contactar-link">
+                    <button class="contactar">Ir al perfil</button>
+                </a>
+            </article>
+        </section>
 
+        <!-- Barra de contacto -->
+        <footer class="barraDeContacto">
+            <a href="https://www.instagram.com/" target="_blank" class="instagram-link">
+                Visítanos en Instagram
+            </a>
+            <span class="soporte">Soporte: +1 234 567 890</span>
+        </footer>
 
-    <!-- Enlace externo -->
+    </main>
+
+    <!-- Scripts -->
+    <script src="MenuPiteractivo.js"></script>
 </body>
 </html>

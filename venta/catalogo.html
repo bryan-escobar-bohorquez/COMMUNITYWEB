@@ -6,6 +6,14 @@
     <title>ALBIWEB - Materiales de Construcción</title>
     <link rel="stylesheet" href="styles.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .category-products {
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -38,26 +46,56 @@
     <section class="categories" id="categorias">
         <h2 class="section-title">Nuestras Categorías</h2>
         <div class="categories-container">
-            <div class="category-card">
-                <img src="img/cemento.jpg" alt="Materiales Básicos">
-                <h3>Materiales Básicos</h3>
+            <div class="category-card" data-category="materiales">
+                <img src="img/materiales-construccion.jpg" alt="Materiales de Construcción">
+                <h3>Materiales de Construcción</h3>
+                <p>Cemento, ladrillos, arena, etc.</p>
             </div>
-            <div class="category-card">
-                <img src="img/herramientas.jpg" alt="Herramientas">
-                <h3>Herramientas</h3>
+            <div class="category-card" data-category="ferreteria">
+                <img src="img/ferreteria.jpg" alt="Ferretería">
+                <h3>Ferretería</h3>
+                <p>Herramientas manuales, clavos, tornillos</p>
             </div>
-            <div class="category-card">
-                <img src="img/electricos.jpg" alt="Eléctricos">
-                <h3>Eléctricos</h3>
+            <div class="category-card" data-category="electricidad">
+                <img src="img/electricidad.jpg" alt="Electricidad">
+                <h3>Electricidad</h3>
+                <p>Cables, interruptores, enchufes</p>
             </div>
+            <div class="category-card" data-category="plomeria">
+                <img src="img/plomeria.jpg" alt="Plomería">
+                <h3>Plomería</h3>
+                <p>Tuberías, grifería, accesorios</p>
+            </div>
+            <div class="category-card" data-category="pinturas">
+                <img src="img/pinturas.jpg" alt="Pinturas y Acabados">
+                <h3>Pinturas y Acabados</h3>
+                <p>Pinturas, barnices, masillas</p>
+            </div>
+            <div class="category-card" data-category="madera">
+                <img src="img/madera.jpg" alt="Madera y Derivados">
+                <h3>Madera y Derivados</h3>
+                <p>Tableros, vigas, listones</p>
+            </div>
+            <div class="category-card" data-category="suelos">
+                <img src="img/suelos.jpg" alt="Suelos y Revestimientos">
+                <h3>Suelos y Revestimientos</h3>
+                <p>Cerámica, porcelanato, alfombras</p>
+            </div>
+        </div>
+
+        <div id="category-products" class="category-products hidden">
+            <h3 class="category-title"></h3>
+            <div class="products-grid category-grid"></div>
+            <div class="products-grid" id="product"></div>
+            <button class="btn back-btn">Volver a categorías</button>
         </div>
     </section>
 
     <!-- Sección Productos Destacados -->
     <section class="products" id="productos">
         <h2 class="section-title">Productos Destacados</h2>
-        <div class="products-grid">
-            <!-- Productos se llenarán con JavaScript -->
+        <div class="featured-grid">
+            
         </div>
     </section>
 
@@ -66,6 +104,7 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h4>ALBIWEB</h4>
+                <p>Tu tienda de confianza para materiales de construcción</p>
             </div>
             <div class="footer-col">
                 <h4>Contacto</h4>
@@ -90,9 +129,11 @@
     <div class="cart-modal">
         <form action="menuP.html" method="get"></form>
         <div class="cart-content">
-            <span class="close-cart">&times;</span>
+            <span class="close-cart" id= "closeCart">&times;</span>
             <h2>Tu Carrito</h2>
-            <div class="cart-items"></div>
+            <div class="cart-items" id="cartItems">
+                
+            </div>
             <div class="cart-total">
                 <span>Total:</span>
                 <span class="total-price">$0 COP</span>
@@ -101,7 +142,7 @@
         </div>
     </div>
 
-    <script src="Catalogo.js"></script>
+    <script src="catalogo.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 </html>

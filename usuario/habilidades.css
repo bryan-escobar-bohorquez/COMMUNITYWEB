@@ -1,0 +1,265 @@
+:root {
+    --gris: #808080;
+    --naranja: #ff8000;
+    --blanco: #fff;
+    --oscuro: #000;
+    --gris_claro: #d3d3d3;
+}
+
+
+/* =============================================
+   SECCIÓN DE HABILIDADES/ETIQUETAS - ESTRUCTURA
+   ============================================= */
+
+   .habilidades {
+    
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    top: -100px;
+    left: -250px;
+    position: relative;
+}
+
+.habilidades h2 {
+    
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+}
+
+/* =============================================
+   CONTENEDOR DE TAGS
+   ============================================= */
+
+.tags-container {
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+    min-height: 40px;
+}
+
+/* =============================================
+   ESTILOS DE TAGS INDIVIDUALES
+   ============================================= */
+
+.tag {
+    
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+/* Niveles de habilidad */
+.tag[data-nivel="principiante"] {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #4caf50;
+}
+
+.tag[data-nivel="intermedio"] {
+    background-color: #fff8e1;
+    color: #ff8f00;
+    border-left: 4px solid #ffc107;
+}
+
+.tag[data-nivel="experto"] {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #f44336;
+}
+
+.tag .nivel {
+    margin-left: 8px;
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+/* Botón eliminar tag */
+.tag .btn-eliminar-tag {
+    margin-left: 8px;
+    color: inherit;
+    opacity: 0.5;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: opacity 0.2s;
+}
+
+.tag .btn-eliminar-tag:hover {
+    opacity: 1;
+}
+
+/* Efectos hover */
+.tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* =============================================
+   FORMULARIO PARA AGREGAR HABILIDADES
+   ============================================= */
+
+.agregar-habilidad {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.agregar-habilidad input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.agregar-habilidad select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.9em;
+}
+
+.btn-agregar-habilidad {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-agregar-habilidad:hover {
+    background-color: #2980b9;
+}
+
+.btn-agregar-habilidad::before {
+    content: "+";
+    font-weight: bold;
+}
+
+/* =============================================
+   BÚSQUEDA Y SUGERENCIAS
+   ============================================= */
+
+.busqueda-container {
+    position: relative;
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+#nueva-habilidad {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.sugerencias {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none;
+    z-index: 100;
+    padding: 10px;
+}
+
+.sugerencia-item {
+    display: block;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sugerencia-item:hover {
+    background-color: #f5f5f5;
+}
+
+.sugerencia-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+.sugerencia-item label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Radio buttons personalizados */
+.sugerencia-item input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #95a5a6;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.sugerencia-item input[type="radio"]:checked {
+    border-color: #3498db;
+}
+
+.sugerencia-item input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #3498db;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+}
+
+.sugerencia-item input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* =============================================
+   DISEÑO RESPONSIVE
+   ============================================= */
+
+@media (max-width: 600px) {
+    .agregar-habilidad {
+        flex-direction: column;
+    }
+    
+    .agregar-habilidad input[type="text"],
+    .agregar-habilidad select {
+        width: 100%;
+    }
+}

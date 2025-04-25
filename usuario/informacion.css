@@ -1,0 +1,487 @@
+
+:root {
+    --gris: #808080;
+    --naranja: #ff8000;
+    --blanco: #fff;
+    --oscuro: #000;
+    --gris_claro: #d3d3d3;
+}
+
+
+/* ===== RESET Y ESTILOS BASE ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #848484;
+    background-color: #d3d3d3; /*color de fondo*/
+    padding-top: 60px;
+}
+
+/* ===== BARRA DE NAVEGACIÓN ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ff0000;
+}
+
+.nav-link.active {
+    color: #ff0000;
+    border-bottom: 2px solid #ff0000;
+}
+
+/* ===== ESTRUCTURA PRINCIPAL ===== */
+.main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== SECCIONES GENERALES ===== */
+.header-section {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 20px;
+}
+
+.header-section h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.content-section {
+    padding: 20px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.content-section:last-child {
+    border-bottom: none;
+}
+
+.content-section h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+/* ===== INFORMACIÓN DE CONTACTO ===== */
+.contact-info {
+    margin: 15px 0;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.location {
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+/* ===== SECCIÓN DE IDIOMAS ===== */
+.languages-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.languages-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.language-card {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.language-card:hover {
+    transform: translateY(-2px);
+}
+
+.language-info {
+    margin-right: 10px;
+}
+
+.language-name {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.language-level {
+    color: #555;
+}
+
+.remove-language {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ff4444;
+    padding: 0 5px;
+    transition: color 0.2s ease;
+}
+
+.remove-language:hover {
+    color: #cc0000;
+}
+
+.add-language-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.level-container {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border-radius: 4px;
+}
+
+.level-option {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.level-option input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* ===== BOTONES ===== */
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* ===== SECCIÓN DE HABILIDADES ===== */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.skill-tag {
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+    background-color: #b2ebf2;
+}
+
+.skill-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+/* ===== SECCIÓN DE DISPONIBILIDAD ===== */
+.availability-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.availability-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.availability-option:hover {
+    background-color: #f5f5f5;
+}
+
+.availability-option input {
+    margin-right: 10px;
+}
+
+/* ===== SECCIÓN DE DOCUMENTOS ===== */
+.documents-container {
+    margin-top: 15px;
+}
+
+.document-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.document-name {
+    font-weight: 500;
+}
+
+.remove-document {
+    background: none;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* ===== BARRA DE PROGRESO ===== */
+.progress-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 20px;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: #4CAF50;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+/* ===== NOTIFICACIONES ===== */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    padding: 12px 24px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.notification.error {
+    background-color: #f44336;
+    color: white;
+}
+
+/* ===== CAMPOS EDITABLES ===== */
+.editable-field {
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.editable-field:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #f0f8ff;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .nav-menu {
+        flex-wrap: wrap;
+    }
+    
+    .nav-item {
+        margin: 5px 10px;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
+    .contact-info p {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .icon {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .add-language-form {
+        padding: 15px;
+    }
+    
+    .btn-primary {
+        width: 100%;
+        padding: 12px;
+    }
+    
+    .skill-input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}/* Estilos para los items de experiencia y educación */
+.experience-item, .education-item {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #eaeaea;
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover, .education-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.remove-item:hover {
+    background-color: #ffeeee;
+}
+
+/* Mejoras para la subida de documentos */
+.add-document {
+    margin-top: 15px;
+}
+
+.add-document label {
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* Validación de email */
+[data-invalid="true"] {
+    border-color: #ff4444 !important;
+    background-color: #fff0f0 !important;
+}
+
+/* Estilos para campos editables anidados */
+.editable-field p {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.editable-field p:focus {
+    background-color: #f0f8ff;
+}

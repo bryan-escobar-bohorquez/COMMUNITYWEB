@@ -17,9 +17,8 @@
             <input type="password" id="password" name="password" placeholder="Contraseña" required>
 
             <!-- Botón para iniciar sesión -->
-            <form action="menuPrincipal/MenuPiteractivo.html" method="get">
-                <input type="submit" value="Iniciar sesión" class="iniciar-sesion">
-            </form>
+          <input type="submit" value="Iniciar sesión" class="iniciar-sesion">
+            
         </form>
 
         <!-- Enlace para "¿Olvidaste tu contraseña?" -->
@@ -51,6 +50,7 @@
         
             const datos = await respuesta.json();
             
+            
             if (!respuesta.ok) {
               throw new Error(datos.mensaje || 'Error al iniciar sesión');
             }
@@ -58,8 +58,7 @@
             // Guardar token y redirigir
             localStorage.setItem('token', datos.token);
             localStorage.setItem('usuario', JSON.stringify(datos.usuario));
-            window.location.href = "menuPrincipal/menuPiteractivo.html";
-            
+            window.location.href = '../menuPrincipal/MenuPiteractivo.html';            
           } catch (error) {
             alert(error.message);
           }

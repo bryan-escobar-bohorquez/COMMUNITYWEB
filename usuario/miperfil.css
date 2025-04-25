@@ -1,0 +1,560 @@
+:root {
+    --gris: #808080;
+    --naranja: #ff8000;
+    --blanco: #fff;
+    --oscuro: #000;
+    --gris_claro: #d3d3d3;
+}
+
+/**
+ * Reset básico para evitar estilos por defecto del navegador
+ * y establecer estilos base consistentes
+ */
+body {
+    margin: 0;
+    padding-top: 60px; /* Añadido para compensar la navbar fija */
+    font-family: Arial, sans-serif;
+    background: #d3d3d3;
+    line-height: 1.6;
+}
+
+/* ============================================= */
+/* BARRA DE NAVEGACIÓN - FIXED TOP */
+/* ============================================= */
+
+.navbar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 5px 10px;
+    padding-top: 5px;
+    position: fixed; /* Hace que la barra sea fija */
+    top: 0;          /* La pega al borde superior */
+    left: 0;         /* La pega al borde izquierdo */
+    width: 100%;     /* Ocupa todo el ancho disponible */
+    z-index: 1000;   /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+.navbar a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ff8000;
+}
+
+.navbar a.active {
+    color: #ff8000;
+    border-bottom: 2px solid #ff8000;
+}
+
+/* Contenedor de notificaciones en la navbar */
+.navbar .notificaciones-container {
+    position: absolute;
+    right: 20px;
+}
+
+/* ============================================= */
+/* PORTADA DE PERFIL */
+/* ============================================= */
+
+.portada {
+    position: relative;
+    width: 95%;
+    height: 500px;
+    margin: 0 auto 70px;
+    background-color: #888888;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+#portada-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Botón para cambiar portada */
+.cambiar-portada {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+}
+
+/* ============================================= */
+/* SECCIÓN DE PERFIL */
+/* ============================================= */
+
+.perfil-container {
+    position: relative;
+    top: -100px;
+    left: -250px;
+    margin: -50px auto 20px auto;
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Foto de perfil circular */
+.foto-perfil-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: 5px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.perfil-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.perfil-foto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón para cambiar foto */
+.cambiar-foto {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
+
+/* Información del perfil */
+.perfil-info {
+    flex: 1;
+}
+
+.perfil-info h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.perfil-info p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* ============================================= */
+/* INFORMACIÓN PERSONAL */
+/* ============================================= */
+
+.descripción {
+    position: relative;
+    top: -550px;
+    left: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.descripción h2 {
+    text-align: center;
+    color: #333;
+}
+
+.descripción ul {
+    list-style: none;
+    padding: 0;
+}
+
+.descripción li {
+    background: #f4f4f4;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+/* ============================================= */
+/* GALERÍA DE FOTOS */
+/* ============================================= */
+
+.galeria {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.galeria h2 {
+    color: #333;
+}
+
+.fotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.foto-item {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.foto-trabajo {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.foto-trabajo:hover {
+    transform: scale(1.03);
+}
+
+/* Botón de eliminar foto */
+.btn-eliminar {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.foto-item:hover .btn-eliminar {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-eliminar:hover {
+    background: #cc0000;
+    transform: scale(1.1);
+}
+
+/* Botón para agregar foto */
+.agregar-foto {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.boton-agregar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.boton-agregar:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================= */
+/* SECCIÓN DE CONTACTO */
+/* ============================================= */
+
+.contacto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    gap: 50px;
+}
+
+/* ============================================= */
+/* NOTIFICACIONES */
+/* ============================================= */
+
+.notificacion-icono {
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.notificaciones-btn {
+    padding: 10px;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notificaciones-btn:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.notificaciones-badge {
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    position: relative;
+    top: -8px;
+    right: 0;
+}
+
+.notificaciones-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 350px;
+    max-height: 500px;
+    overflow-y: auto;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.notificaciones-container:hover .notificaciones-dropdown {
+    display: block;
+}
+
+.notificaciones-header {
+    padding: 12px 16px;
+    background: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.notificaciones-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.marcar-todas {
+    background: none;
+    border: none;
+    color: #4CAF50;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.notificaciones-list {
+    padding: 0;
+    margin: 0;
+}
+
+.notificacion-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.notificacion-item:hover {
+    background-color: #f9f9f9;
+}
+
+.notificacion-item.no-leida {
+    background-color: #f0f7ff;
+}
+
+.notificacion-icono {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: #ff8000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notificacion-contenido {
+    flex: 1;
+}
+
+.notificacion-titulo {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.notificacion-mensaje {
+    font-size: 14px;
+    color: #555;
+}
+
+.notificacion-tiempo {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+}
+
+/* Animación para notificaciones */
+@keyframes bell-ring {
+    0% { transform: rotate(0); }
+    10% { transform: rotate(15deg); }
+    20% { transform: rotate(-15deg); }
+    30% { transform: rotate(15deg); }
+    40% { transform: rotate(-15deg); }
+    50% { transform: rotate(0); }
+    100% { transform: rotate(0); }
+}
+
+.notificaciones-btn.has-notifications .notificacion-icono {
+    animation: bell-ring 1s ease-in-out;
+}
+
+/* ============================================= */
+/* MODAL PARA VISOR DE IMÁGENES */
+/* ============================================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.modal-contenido {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.eliminar-modal {
+    position: absolute;
+    top: 15px;
+    right: 60px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    background: rgba(255, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.eliminar-modal:hover {
+    background: rgba(255, 0, 0, 0.9);
+}
+
+/* ============================================= */
+/* MEDIA QUERIES PARA RESPONSIVIDAD */
+/* ============================================= */
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 50px; /* Ajuste para navbar en móviles */
+    }
+    
+    .portada {
+        height: 250px;
+        margin-bottom: 50px;
+    }
+    
+    .perfil-container {
+        flex-direction: column;
+        text-align: center;
+        margin-top: -30px;
+    }
+    
+    .foto-perfil-container {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .descripción {
+        position: static;
+        max-width: 100%;
+        margin: 20px auto;
+        top: 0;
+        left: 0;
+    }
+    
+    .btn-eliminar {
+        opacity: 1;
+        visibility: visible;
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+    
+    .contacto {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .notificaciones-dropdown {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100vh - 60px);
+    }
+}

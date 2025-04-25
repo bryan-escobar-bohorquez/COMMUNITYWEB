@@ -1,64 +1,195 @@
 <!DOCTYPE html>
-<html lang="es">
+
 <head>
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="MIPERFILCSS.CSS">
+    
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="miperfil.css">
+    <link rel="stylesheet" href="habilidades.css">
+    <link rel="stylesheet" href="comentarios.css">
+    
+    
+    <!-- Scripts JavaScript -->
+    <script src="miperfil.js"></script>
+    <script src="portada.js"></script>
+    <script src="habilidades.js"></script>
+    <script src="notificaciones.js"></script>
+    <script src="comentarios.js"></script>
+    
     <title>Perfil - Página</title>
 </head>
 <body>
 
-    <!-- Foto de portada -->
+    <!-- Barra de navegación principal -->
     
-
-    <!-- Barra de navegación -->
-    <div class="navbar">
-        <a href="MenuPiteractivo.html">Inicio</a>
-        <a href="#descripción">Sobre mí</a>
-        <a href="#galeria">Proyectos</a>
-        <a href="#contacto">Contacto</a>
+<div class="navbar">
+    <a href="/menuPrincipal/MenuPiteractivo.html">Inicio</a>
+    <a href="informacion.html">Información</a>
+    <a href="#galeria">Proyectos</a>
+    <a href="#contacto">Contacto</a>
+    
+    <!-- Nuevo elemento de notificaciones con ícono -->
+    <div class="notificaciones-container">
+        <a class="notificaciones-btn" id="notificaciones-btn">
+            <!-- Ícono de campana de notificaciones -->
+            <svg class="notificacion-icono" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <!-- Contador de notificaciones -->
+            <span class="notificaciones-badge" id="notificaciones-badge">0</span>
+        </a>
+        <!-- Dropdown de notificaciones -->
+        <div class="notificaciones-dropdown" id="notificaciones-dropdown">
+            <div class="notificaciones-header">
+                <h3>Notificaciones</h3>
+                <button class="marcar-todas">Marcar todas como leídas</button>
+            </div>
+            <div class="notificaciones-list" id="notificaciones-list">
+                <div class="notificacion-vacia">No tienes notificaciones nuevas</div>
+            </div>
+        </div>
     </div>
+</div>
+    </div>
+
+    
+    
+    <!-- Sección de portada con imagen y opción para cambiarla -->
     <div class="portada">
-        <img src="fondo.jpg" alt="Foto de portada">
+        <!-- Imagen de portada que se cargará dinámicamente -->
+        <img id="portada-img" src="" alt="Foto de portada">
+        
+        <!-- Controles para cambiar la imagen de portada -->
+        <div class="cambiar-portada">
+            <input type="file" id="input-portada" accept="image/*" style="display: none;">
+            <label for="input-portada" class="boton-cambiar">Cambiar portada</label>
+        </div>
     </div>
 
-    <!-- Sección de perfil -->
+    <!-- Sección de perfil del usuario -->
     <div class="perfil-container">
-        <img src="persona1.png" alt="Foto de perfil" class="perfil-foto">
+        <!-- Contenedor de la foto de perfil -->
+        <div class="foto-perfil-container">
+            <!-- Imagen de perfil que se cargará dinámicamente -->
+            <img id="foto-perfil-img" src="" alt="Foto de perfil" class="perfil-foto">
+            
+            <!-- Controles para cambiar la foto de perfil -->
+            <div class="cambiar-foto">
+                <input type="file" id="input-perfil" accept="image/*" style="display: none;">
+                <label for="input-perfil" class="boton-cambiar">Cambiar foto</label>
+            </div>
+        </div>
+        
+        <!-- Información básica del perfil -->
         <div class="perfil-info">
-            <h1>joel rodrigez </h1>
-            <p>persona dedicada y apasionada por el mundo de la construcción. Disfruta trabajar con sus manos, levantar estructuras y ver cómo un proyecto toma forma desde sus cimientos. Su habilidad para manejar herramientas y maquinaria lo convierte en un trabajador eficiente y confiable. Es una persona comprometida, con gran resistencia física y mental, que no teme los desafíos ni las largas jornadas de trabajo. Siempre está dispuesto a aprender nuevas técnicas y a colaborar con su equipo para garantizar un trabajo bien hecho. Para él, cada obra es un logro y una oportunidad de dejar huella con su esfuerzo y dedicación.</p>
+            <h1>Joel Rodriguez</h1>
+            <p>Persona dedicada y apasionada por el mundo de la construcción...</p>
+            <!-- Enlace para editar el perfil -->
+            <a href="editar">editar</a>
         </div>
     </div>
 
-    <!-- Sección de información -->
-    <div id ="descripción" class="descripción">
-        <h2>Información Personal</h2>
-        <ul>
-            <li>Edad: 25 años</li>
-            <li>Ciudad: Andalucia</li>
-            <li>Profesión: Obra Negra,Blanca y Electricista </li>
-            <li>Intereses: La construccion </li>
-            <li>Idiomas: Español</li>
-        </ul>
-    </div>
-
-    <!-- Sección de fotos del perfil -->
-    <div id="galeria" class="galeria">
-        <h2>trabajos</h2>
-        <div class="fotos">
-            <img src="fondo.jpg" alt="Foto 1">
-            <img src="trabajo2.jpg" alt="Foto 2">
-            <img src="trabajo3.jpg" alt="Foto 3">
-
-           
+    <!-- Sección de habilidades -->
+    <div class="habilidades">
+        <h3>Habilidades</h3>
+        
+        <!-- Contenedor donde se mostrarán las habilidades como tags -->
+        <div class="tags-container" id="habilidades-lista">
+            <!-- Se llenará dinámicamente con JavaScript -->
+        </div>
+        
+        <!-- Formulario para agregar nuevas habilidades -->
+        <div class="agregar-habilidad">
+            <!-- Campo de búsqueda con autocompletado -->
+            <div class="busqueda-container">
+                <input type="text" id="nueva-habilidad" placeholder="Buscar habilidades..." 
+                       oninput="filtrarHabilidades()" onclick="mostrarTodasHabilidades()">
+                
+                <!-- Contenedor para las sugerencias de autocompletado -->
+                <div class="sugerencias" id="sugerencias-habilidades">
+                    <!-- Las sugerencias aparecerán aquí como radio buttons -->
+                </div>
+            </div>
+            
+            <!-- Selector de nivel de habilidad -->
+            <select id="nivel-habilidad">
+                <option value="principiante">Principiante ★ ☆ ☆</option>
+                <option value="intermedio">Intermedio ★ ★ ☆</option>
+                <option value="experto">Experto ★ ★ ★</option>
+            </select>
+            
+            <!-- Botón para agregar la habilidad -->
+            <button onclick="agregarHabilidad()">Añadir</button>
         </div>
     </div>
 
+    <!-- ============================================= -->
+<!-- SECCIÓN DE COMENTARIOS -->
+<!-- ============================================= -->
+<div class="profile-container">
+    <div class="profile-header">
+       
+        
+    </div>
+    
+    <div class="comment-section">
+        <h2 class="comment-title">Comentar</h2>
+        
+        <div class="comments-container" id="commentsContainer">
+            <!-- Los comentarios aparecerán aquí -->
+        </div>
+        
+        <div class="comment-form">
+            <textarea class="comment-input" placeholder="Escribe tu comentario aquí..." id="commentInput"></textarea>
+            <button class="submit-btn" id="submitComment">Publicar</button>
+        </div>
+    </div>
+</div>
+
+   
+    
+    <!-- Sección de galería de fotos -->
+    <div class="classgalery">
+        <div id="galeria" class="galeria">
+            <div class="galeria-header">
+                <h2>fotos</h2>
+            </div>
+            
+            <!-- Contenedor donde se mostrarán las fotos -->
+            <div class="fotos" id="contenedor-fotos">
+                <!-- Las fotos se agregarán dinámicamente aquí -->
+            </div>
+            
+            <!-- Controles para agregar nuevas fotos -->
+            <div class="agregar-foto">
+                <input type="file" id="nueva-foto" accept="image/*" style="display: none;">
+                <label for="nueva-foto" class="boton-agregar">+ Agregar Foto</label>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Modal para visualización ampliada de fotos -->
+    <div id="visor-modal" class="modal">
+        <!-- Botón para cerrar el modal -->
+        <span class="cerrar-modal">&times;</span>
+        
+        <!-- Botón para eliminar la foto -->
+        <span class="eliminar-modal">🗑️ Eliminar</span>
+        
+        <!-- Contenedor de la imagen ampliada -->
+        <img class="modal-contenido" id="imagen-modal">
+    </div>
+
+    <!-- Sección de información de contacto -->
     <div id="contacto" class="contacto">
-        <p>Teléfono: 123-456-789</p>
-        <p>Email: correo@ejemplo.com</p>
-        <p>Ubicación: Ciudad XYZ</p>
+        
+        <p>Copyright 2025 DGNET LTD.
+        Contacto de candidato / Ayuda de candidato</p>
+        
     </div>
+   
 </body>
-</html>

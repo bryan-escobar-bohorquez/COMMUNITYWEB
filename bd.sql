@@ -31,3 +31,15 @@ ALTER TABLE Material ADD COLUMN imagen VARCHAR(255);
 ALTER TABLE Material ADD CONSTRAINT fk_material_usuario 
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) 
     ON DELETE CASCADE;
+
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    email VARCHAR(100),
+    telefono VARCHAR(15),
+    password VARCHAR(255),
+    fecha_nacimiento DATE,
+    genero VARCHAR(20),
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

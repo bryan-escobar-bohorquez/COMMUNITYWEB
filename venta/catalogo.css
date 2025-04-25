@@ -126,7 +126,7 @@ header {
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-    transition: background 0.3s;
+    transition:  0.3s;
 }
 
 .btn:hover {

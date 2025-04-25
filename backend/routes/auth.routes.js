@@ -8,4 +8,5 @@ router.post('/registro', authController.registrar);
 // Iniciar sesión
 router.post('/login', authController.iniciarSesion);
 
+
 module.exports = router;

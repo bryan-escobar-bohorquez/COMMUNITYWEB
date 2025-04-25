@@ -47,7 +47,7 @@ exports.registrar = async (req, res) => {
     // Crear nuevo usuario con todos los campos
     const [resultado] = await pool.query(
       `INSERT INTO usuarios 
-      (nombre_completo, email, telefono, password_hash, fecha_nacimiento, genero) 
+      (nombre, email, telefono, password, fecha_nacimiento, genero) 
       VALUES (?, ?, ?, ?, ?, ?)`,
       [nombre, email, telefono, passwordEncriptada, fecha_nacimiento, genero]
     );
@@ -85,26 +85,26 @@ exports.registrar = async (req, res) => {
     res.status(500).json({ mensaje: 'Error en el servidor' });
   }
 };
-
 // Iniciar sesión
 exports.iniciarSesion = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Buscar usuario
+    // Buscar usuario por email
     const [usuarios] = await pool.query(
       'SELECT * FROM usuarios WHERE email = ?',
       [email]
     );
 
+    // Validar si existe el usuario
     if (usuarios.length === 0) {
       return res.status(400).json({ mensaje: 'Credenciales inválidas' });
     }
 
     const usuario = usuarios[0];
 
-    // Verificar contraseña
-    const esValida = await bcrypt.compare(password, usuario.password_hash);
+    // Verificar contraseña usando el campo correcto ('password')
+    const esValida = await bcrypt.compare(password, usuario.password);
     if (!esValida) {
       return res.status(400).json({ mensaje: 'Credenciales inválidas' });
     }
@@ -127,7 +127,7 @@ exports.iniciarSesion = async (req, res) => {
           token,
           usuario: {
             id: usuario.id,
-            nombre: usuario.nombre_completo,
+            nombre: usuario.nombre,
             email: usuario.email,
             telefono: usuario.telefono,
             fecha_nacimiento: usuario.fecha_nacimiento,
@@ -142,3 +142,6 @@ exports.iniciarSesion = async (req, res) => {
     res.status(500).json({ mensaje: 'Error en el servidor' });
   }
 };
+
+
+  

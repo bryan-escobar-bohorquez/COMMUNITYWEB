@@ -1,18 +1,24 @@
 const mysql = require('mysql2/promise');
+require('dotenv').config();
 
-const pool = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'rutas1', 
-  database: 'albiweb'
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || 'rutas1',
+  database: process.env.DB_NAME || 'albiweb',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-connection.connect((err) => {
+// Prueba la conexión
+pool.getConnection((err, connection) => {
   if (err) {
-      console.error('Error al conectar con la base de datos:', err);
+    console.error('Error de conexión:', err);
   } else {
-      console.log('Conectado a la base de datos');
+    console.log('Conexión exitosa con POOL');
+    connection.release();
   }
 });
 
-module.exports = connection;
+module.exports = pool;
