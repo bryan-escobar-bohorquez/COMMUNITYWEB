@@ -186,3 +186,23 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('imagenesPerfil', JSON.stringify(imagenes));
     }
 });
+    document.addEventListener('DOMContentLoaded', function() {
+        const barraContacto = document.querySelector('.contacto');
+        let ultimaPosicion = 0;
+        const umbral = 150; // Píxeles a bajar antes de mostrar
+        
+        window.addEventListener('scroll', function() {
+            const posicionActual = window.pageYOffset;
+            
+            // Mostrar si bajamos más del umbral
+            if (posicionActual > umbral && posicionActual > ultimaPosicion) {
+                barraContacto.classList.add('visible');
+            } 
+            // Ocultar si estamos cerca del tope o subiendo
+            else if (posicionActual < (umbral / 2) || posicionActual < ultimaPosicion) {
+                barraContacto.classList.remove('visible');
+            }
+            
+            ultimaPosicion = posicionActual;
+        });
+    });

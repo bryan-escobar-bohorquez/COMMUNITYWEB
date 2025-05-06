@@ -1,100 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albiweb</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Albiweb</title>
 
-    <!-- Ícono de la pestaña -->
-    <link rel="icon" href="logosinfondo.png" sizes="64x64">
+  <!-- Ícono de pestaña -->
+  <link rel="icon" href="logosinfondo.png" sizes="64x64" />
 
-    <!-- Hojas de estilo -->
-    <link rel="stylesheet" href="nuesTra.css">
-    <link rel="stylesheet" href="oferta.css">
+  <!-- Hojas de estilo -->
+  <link rel="stylesheet" href="nuesTra.css" />
+  <link rel="stylesheet" href="oferta.css" />
 </head>
 
 <body>
-    <!-- 🔶 Barra de navegación principal -->
-    <header class="barraC">
-        <div class="logo-nombre">
-            <img src="logoicon.jpg" alt="Logo" class="logo">
-        </div>
+  <!-- 🔶 Barra de navegación -->
+  <header class="barraC">
+    <div class="logo-nombre">
+      <img src="logoicon.jpg" alt="Logo" class="logo" />
+    </div>
 
-        <!-- 🔸 Enlaces de navegación centrados -->
-        <nav class="nav-links">
-            <a href="MenuPiteractivo.html">Personal</a>
-            <a href="oferta.html" class="activo">Ofertas</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="MIPERFIL.HTML">Mi perfil</a>
-        </nav>
-    </header>
+    <nav class="nav-links">
+      <a href="MenuPiteractivo.html">Personal</a>
+      <a href="oferta.html" class="activo">Ofertas</a>
+      <a href="/venta/catalogo.html">Catálogo</a>
+      <a href="/usuario/MIPERFIL.HTML">Mi perfil</a>
+    </nav>
 
-    <!-- 🔶 Encabezado y barra de búsqueda -->
-    <section class="contenedor-barra">
-        <h1 class="titulo">
-            <span class="negro">Serv</span><span class="naranja">icios</span>
-        </h1>
+    <div class="publicar-oferta">
+      <button onclick="window.location.href='formularioOferta.html'">Publicar oferta</button>
+    </div>
+  </header>
 
-        <div class="barra-busqueda">
-            <input 
-                type="text" 
-                id="campo-busqueda" 
-                placeholder="Buscar servicio..." 
-                class="campo-busqueda"
-            >
-            <button type="submit" class="boton-busqueda">Buscar</button>
-        </div>
-    </section>
+  <!-- 🔶 Encabezado y búsqueda -->
+  <section class="contenedor-barra">
+    <h1 class="titulo">
+      <span class="negro">Serv</span><span class="naranja">icios</span>
+    </h1>
 
-    <!-- 🔶 Contenedor principal de servicios/ofertas -->
-    <main class="contenedor-ofertas">
-        <!-- 🔸 Columna izquierda: listado de servicios -->
-        <div class="contenedor-scroll">
-            <div class="contenedor-servicios">
-                <!-- 🔹 Tarjeta: Electricista -->
-                <div class="servicio" data-clave="electricista">
-                    <div class="servicio-header">
-                        <h3>Electricista</h3>
-                        <p>descripcion</p>
-                    </div>
-                    <div class="botones-servicio">
-                        <button class="boton-negociar">Negociar</button>
-                        <button class="boton-aplicar">Aplicar</button>
-                    </div>
-                </div>
+    <div class="barra-busqueda">
+      <input
+        type="text"
+        id="campo-busqueda"
+        placeholder="Buscar servicio..."
+        class="campo-busqueda"
+      />
+      <button type="submit" class="boton-busqueda">Buscar</button>
+    </div>
+  </section>
 
-                <!-- 🔹 Tarjeta: Plomero -->
-                <div class="servicio" data-clave="plomero">
-                    <div class="servicio-header">
-                        <h3>Plomero</h3>
-                        <p>descripcion</p>
-                    </div>
-                    <div class="botones-servicio">
-                        <button class="boton-negociar">Negociar</button>
-                        <button class="boton-aplicar">Aplicar</button>
-                    </div>
-                </div>
+  <!-- 🔶 Contenido principal -->
+  <main class="contenedor-ofertas">
+    <!-- 🔸 Columna izquierda -->
+    <div class="contenedor-scroll">
+      <div class="contenedor-servicios" id="contenedor-servicios">
+        <!-- Tarjetas dinámicas aquí -->
+      </div>
+    </div>
+ 
+    <!-- 🔸 Columna derecha -->
+    <aside class="detalle-servicio contenedor-scroll" id="detalle-servicio">
+      <h2>Selecciona una oferta</h2>
+      <p>Haz clic en alguna tarjeta para ver los detalles aquí.</p>
+    </aside>
+  </main>
 
-                <!-- Puedes agregar más servicios aquí -->
-            </div>
-        </div>
+  <!-- 🔶 Barra inferior -->
+  <footer class="barraDeContacto">
+    <a href="https://www.instagram.com/" target="_blank" class="instagram-link">
+      Visítanos en Instagram
+    </a>
+    <span class="soporte">Soporte: +1 234 567 890</span>
+  </footer>
 
-        <!-- 🔸 Columna derecha: detalles del servicio -->
-        <aside class="detalle-servicio contenedor-scroll" id="detalle-servicio">
-            <h2>Selecciona una oferta</h2>
-            <p>Haz clic en alguna tarjeta para ver los detalles aquí.</p>
-        </aside>
-    </main>
-
-    <!-- 🔶 Barra inferior de contacto -->
-    <footer class="barraDeContacto">
-        <a href="https://www.instagram.com/" target="_blank" class="instagram-link">
-            Visítanos en Instagram
-        </a>
-        <span class="soporte">Soporte: +1 234 567 890</span>
-    </footer>
-
-    <!-- 🔶 Script de interacción -->
-    <script src="oferta.js"></script>
+  <!-- 🔶 Script defer para que cargue luego del DOM -->
+  <script src="oferta.js" defer></script>
 </body>
 </html>

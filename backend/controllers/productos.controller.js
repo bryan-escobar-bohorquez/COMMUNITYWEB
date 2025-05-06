@@ -75,4 +75,41 @@ exports.obtenerProductos = async (req, res) => {
       res.status(500).json({ mensaje: 'Error al obtener productos destacados' });
     }
   };
+
+ /* exports.buscarProductos = async (req, res) => {
+    const { termino } = req.query;
+  
+    try {
+        const [productos] = await pool.query(
+            `SELECT * FROM productos 
+             WHERE LOWER(nombre) LIKE LOWER(?)`,
+            [`%${termino}%`]
+        );
+        
+        res.json(productos.length > 0 ? productos : { mensaje: "No se encontraron resultados" });
+        
+    } catch (err) {
+        res.status(500).json({ error: 'Error en la búsqueda' });
+    }
+  };*/
+
+  // En el backend (productosController.js)
+exports.buscarProductos = async (req, res) => {
+  const termino = req.query.termino || '';
+  
+  try {
+      const [productos] = await pool.query(
+          `SELECT * FROM productos 
+           WHERE nombre LIKE ? 
+           AND stock > 0`,
+          [`%${termino}%`]
+      );
+      
+      res.json(productos.length > 0 ? productos : []);
+      
+  } catch (err) {
+      console.error("Error en búsqueda:", err);
+      res.status(500).json({ error: 'Error en el servidor' });
+  }
+};
   

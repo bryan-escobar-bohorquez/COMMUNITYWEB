@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publicar Oferta</title>
+  <link rel="stylesheet" href="formularioOferta.css" />
+</head>
+<body>
+  <h1>Publicar Nueva Oferta</h1>
+
+  <form id="formulario-oferta" novalidate>
+    <label for="titulo">Título del servicio:</label>
+    <input type="text" id="titulo" name="titulo" required />
+
+    <label for="categoria">Categoría:</label>
+    <select id="categoria" name="categoria" required>
+      <option value="">Seleccione una opción</option>
+      <option value="Electricista">Electricista</option>
+      <option value="Plomería">Plomería</option>
+      <option value="Construcción">Construcción</option>
+      <option value="Carpintería">Carpintería</option>
+      <option value="Otro">Otro</option>
+    </select>
+
+    <label for="ubicacion">Ubicación:</label>
+    <input type="text" id="ubicacion" name="ubicacion" required />
+
+    <label for="precio">Precio / Pago Ofrecido:</label>
+    <input type="text" id="precio" name="precio" required />
+
+    <label for="contacto">Contacto (correo o teléfono):</label>
+    <input type="text" id="contacto" name="contacto" required />
+
+    <label for="descripcion">Descripción detallada:</label>
+    <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
+
+    <button type="submit">Publicar Oferta</button>
+
+    <!-- Mensaje de éxito/error -->
+    <div id="mensaje" class="notificacion"></div>
+  </form>
+
+  <script src="formularioOferta.js" defer></script>
+</body>
+</html>

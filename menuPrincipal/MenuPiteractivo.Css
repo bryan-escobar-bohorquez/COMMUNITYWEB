@@ -87,6 +87,29 @@ body {
     color: #ff8000;
     transform: scale(1.05);
 }
+/* Botón de cerrar sesión*/
+.cerrar-sesion {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.cerrar-sesion button {
+    background-color: #ff8000;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.cerrar-sesion button:hover {
+    transform: scale(1.1);
+    background-color: #ff8000;
+}
+
 
 /* ───────────────────────────── */
 /* Título y colores de sección */
@@ -205,25 +228,23 @@ body {
 /* Botón de contacto */
 /* ───────────────────────────── */
 .contactar-link {
-    text-decoration: none;
-}
-
-.contactar {
+    display: block;
+    padding: 2px 70px;
+    border: none;
     background-color: #353330;
     color: white;
-    border: none;
-    padding: 2px 70px;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 30px;
     transition: 0.3s ease-in-out;
-    display: block;
     margin: 20px auto 0;
+    text-align: center
 }
 
-.contactar:hover {
-    transform: scale(1.1);
+.contactar-link:hover {
+    background-color: #353330;
 }
+
 
 /* ───────────────────────────── */
 /* Responsivo */

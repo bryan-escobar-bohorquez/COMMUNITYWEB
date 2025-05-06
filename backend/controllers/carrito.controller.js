@@ -102,7 +102,7 @@ exports.agregarAlCarrito = async (req, res) => {
   };
 
 
-  exports.vaciarCarrito = async (req, res) => {
+  /*ports.vaciarCarrito = async (req, res) => {
     const  usuarioId  = 1
 
     try {
@@ -120,8 +120,77 @@ exports.agregarAlCarrito = async (req, res) => {
         console.error("Error al vaciar el carrito:", err);
         res.status(500).json({ mensaje: 'Error al vaciar el carrito en la base de datos' });
     }
-};
+};*/
 
+exports.finalizarCompra = async (req, res) => {
+  const usuarioId = 1; // Reemplazar con ID de usuario real
+  
+  try {
+      // Iniciar transacción
+      await pool.query('START TRANSACTION');
+      
+      // 1. Obtener items del carrito
+      const [itemsCarrito] = await pool.query(
+          `SELECT c.producto_id, c.cantidad, p.precio, p.nombre 
+           FROM carrito c 
+           JOIN productos p ON c.producto_id = p.id 
+           WHERE c.usuario_id = ?`,
+          [usuarioId]
+      );
+      
+      if (itemsCarrito.length === 0) {
+          return res.status(400).json({ mensaje: 'El carrito está vacío' });
+      }
+      
+      // 2. Calcular total
+      const total = itemsCarrito.reduce((suma, item) => 
+          suma + (item.precio * item.cantidad), 0);
+      
+      // 3. Crear pedido
+      const [resultadoOrden] = await pool.query(
+          'INSERT INTO ordenes (usuario_id, total) VALUES (?, ?)',
+          [usuarioId, total]
+      );
+      const ordenId = resultadoOrden.insertId;
+      
+      // 4. Agregar productos al pedido
+      for (const item of itemsCarrito) {
+          await pool.query(
+              `INSERT INTO ordenes_productos 
+               (orden_id, producto_id, cantidad, precio_unitario) 
+               VALUES (?, ?, ?, ?)`,
+              [ordenId, item.producto_id, item.cantidad, item.precio]
+          );
+          
+          // Opcional: Reducir stock
+          await pool.query(
+              'UPDATE productos SET stock = stock - ? WHERE id = ?',
+              [item.cantidad, item.producto_id]
+          );
+      }
+      
+      // 5. Vaciar carrito
+      await pool.query(
+          'DELETE FROM carrito WHERE usuario_id = ?',
+          [usuarioId]
+      );
+      
+      // Confirmar transacción
+      await pool.query('COMMIT');
+      
+      res.json({ 
+          mensaje: 'Compra realizada con éxito',
+          ordenId,
+          total,
+          productos: itemsCarrito
+      });
+      
+  } catch (err) {
+      await pool.query('ROLLBACK');
+      console.error('Error al finalizar compra:', err);
+      res.status(500).json({ mensaje: 'Error al finalizar la compra' });
+  }
+};
 
 
 

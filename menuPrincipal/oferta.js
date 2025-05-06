@@ -1,93 +1,107 @@
-// Objeto que contiene los detalles de cada servicio, identificados por una clave
-const detalles = {
-  electricista: {
-    titulo: "Reparación de circuito eléctrico",
-    empresa: "Construcciones Alfa S.A.",
-    ciudad: "Bogotá",
-    salario: "$2.000.000",
-    modalidad: "Presencial",
-    descripcion: "Se requiere electricista profesional para realizar reparaciones en el cableado de una obra residencial. Se valorará experiencia previa y certificación."
-  },
-  plomero: {
-    titulo: "Reparación de plomería",
-    empresa: "Construcciones Alfa S.A.",
-    ciudad: "Bogotá",
-    salario: "$1.800.000",
-    modalidad: "Presencial",
-    descripcion: "Se busca plomero con experiencia para atender urgencias domésticas. Contrato por prestación de servicios, con posibilidad de extensión."
-  }
-  // Puedes agregar más servicios aquí, usando la misma estructura
-};
+// Función para mostrar notificación temporal
+function mostrarNotificacion(mensaje, tipo = 'exito') {
+  const notificacion = document.createElement("div");
+  notificacion.textContent = mensaje;
+  notificacion.style.position = "fixed";
+  notificacion.style.top = "20px";
+  notificacion.style.right = "20px";
+  notificacion.style.padding = "10px 20px";
+  notificacion.style.backgroundColor = tipo === 'error' ? "#e74c3c" : "#27ae60";
+  notificacion.style.color = "white";
+  notificacion.style.borderRadius = "10px";
+  notificacion.style.zIndex = 1000;
+  document.body.appendChild(notificacion);
 
-// Espera a que el contenido HTML se cargue completamente antes de ejecutar el script
+  setTimeout(() => {
+    notificacion.remove();
+  }, 3000);
+}
+
 window.addEventListener("DOMContentLoaded", () => {
-
-  // Selecciona todas las tarjetas de servicios mostradas en la página
-  const tarjetas = document.querySelectorAll(".servicio");
-
-  // Selecciona el contenedor donde se mostrará el detalle del servicio
   const detalleDiv = document.getElementById("detalle-servicio");
-
-  // Obtiene el campo de búsqueda (donde el usuario escribe lo que quiere buscar)
   const campoBusqueda = document.getElementById("campo-busqueda");
-
-  // Obtiene el botón de búsqueda
   const botonBusqueda = document.querySelector(".boton-busqueda");
+  const contenedorServicios = document.getElementById("contenedor-servicios");
 
-  // Función que muestra los detalles del servicio en el panel derecho
-  function mostrarDetalleServicio(clave) {
-    const info = detalles[clave]; // Obtiene los datos del servicio según su clave
-
-    // Si existe información para esa clave, muestra los detalles en el contenedor
-    if (info) {
-      const contenedor = document.getElementById("detalle-servicio");
-      contenedor.innerHTML = `
-        <h2>${info.titulo}</h2>
-        <p><strong>Empresa:</strong> ${info.empresa}</p>
-        <p><strong>Ciudad:</strong> ${info.ciudad}</p>
-        <p><strong>Salario:</strong> ${info.salario}</p>
-        <p><strong>Modalidad:</strong> ${info.modalidad}</p>
-        <p><strong>Descripción:</strong> ${info.descripcion}</p>
-        <button class="contactar">Contactar</button>
-      `;
-    }
+  // Mostrar detalles de una oferta
+  function mostrarDetalle(oferta) {
+    detalleDiv.innerHTML = `
+      <h2>${oferta.titulo}</h2>
+      <p><strong>Categoría:</strong> ${oferta.categoria}</p>
+      <p><strong>Ubicación:</strong> ${oferta.ubicacion}</p>
+      <p><strong>Precio:</strong> ${oferta.precio}</p>
+      <p><strong>Contacto:</strong> ${oferta.contacto}</p>
+      <p><strong>Descripción:</strong> ${oferta.descripcion}</p>
+    `;
   }
 
-  // Asigna un evento a cada tarjeta para que, al hacer clic, muestre los detalles correspondientes
-  document.querySelectorAll(".servicio").forEach(servicio => {
-    servicio.addEventListener("click", () => {
-      // Obtiene la clave del servicio desde el atributo personalizado data-clave
-      const clave = servicio.getAttribute("data-clave");
+  // Crear tarjeta HTML por cada oferta
+  function crearTarjeta(oferta) {
+    const tarjeta = document.createElement("div");
+    tarjeta.classList.add("servicio");
+    tarjeta.setAttribute("data-clave", oferta.id || oferta.titulo);
 
-      // Llama a la función para mostrar los detalles en pantalla
-      mostrarDetalleServicio(clave);
+    tarjeta.innerHTML = `
+      <div class="servicio-header">
+        <h3>${oferta.titulo}</h3>
+        <p>${oferta.descripcion.substring(0, 60)}...</p>
+      </div>
+      <div class="botones-servicio">
+        <button class="boton-negociar">Negociar</button>
+        <button class="boton-aplicar">Aplicar</button>
+      </div>
+    `;
+
+    tarjeta.addEventListener("click", () => {
+      mostrarDetalle(oferta);
     });
-  });
 
-  // Función que filtra los servicios en pantalla según el texto escrito por el usuario
+    tarjeta.querySelector(".boton-aplicar").addEventListener("click", (e) => {
+      e.stopPropagation();
+      mostrarNotificacion("¡Has aplicado correctamente a esta oferta!");
+    });
+
+    tarjeta.querySelector(".boton-negociar").addEventListener("click", (e) => {
+      e.stopPropagation();
+      mostrarNotificacion("Redirigiendo a sección de negociación...");
+      // window.location.href = "/negociar.html";
+    });
+
+    return tarjeta;
+  }
+
+  function mostrarOfertas(ofertas) {
+    contenedorServicios.innerHTML = "";
+    ofertas.forEach(oferta => {
+      const tarjeta = crearTarjeta(oferta);
+      contenedorServicios.appendChild(tarjeta);
+    });
+  }
+
   function buscarServicios() {
-    const filtro = campoBusqueda.value.toLowerCase(); // Convierte el texto a minúsculas
-
+    const filtro = campoBusqueda.value.toLowerCase();
+    const tarjetas = document.querySelectorAll(".servicio");
     tarjetas.forEach(servicio => {
-      const titulo = servicio.querySelector('h3').textContent.toLowerCase(); // Título en minúsculas
-      const descripcion = servicio.querySelector('p').textContent.toLowerCase(); // Descripción en minúsculas
-
-      // Si el texto aparece en el título o en la descripción, muestra la tarjeta
-      if (titulo.includes(filtro) || descripcion.includes(filtro)) {
-        servicio.style.display = "block"; // Mostrar
-      } else {
-        servicio.style.display = "none"; // Ocultar
-      }
+      const titulo = servicio.querySelector("h3").textContent.toLowerCase();
+      const descripcion = servicio.querySelector("p").textContent.toLowerCase();
+      servicio.style.display = (titulo.includes(filtro) || descripcion.includes(filtro)) ? "block" : "none";
     });
   }
 
-  // Ejecuta la búsqueda al hacer clic en el botón
-  botonBusqueda.addEventListener("click", buscarServicios);
+  // ⚠️ Ruta actualizada con URL absoluta al backend
+  fetch("http://localhost:5000/api/ofertas")
+    .then(res => {
+      if (!res.ok) throw new Error("Error al obtener ofertas");
+      return res.json();
+    })
+    .then(data => mostrarOfertas(data))
+    .catch(err => {
+      console.error(err);
+      mostrarNotificacion("Error al cargar ofertas", "error");
+    });
 
-  // Ejecuta la búsqueda al presionar la tecla Enter en el campo de búsqueda
-  campoBusqueda.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      buscarServicios();
-    }
+  botonBusqueda.addEventListener("click", buscarServicios);
+  campoBusqueda.addEventListener("keypress", e => {
+    if (e.key === "Enter") buscarServicios();
   });
 });

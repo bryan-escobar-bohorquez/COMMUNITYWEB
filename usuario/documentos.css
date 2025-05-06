@@ -64,6 +64,7 @@
 
 #add-skill-btn:hover {
     background-color: #1e88e5;
+};
 }
 
 
@@ -129,7 +130,7 @@
 
 .upload-btn {
     display: inline-block;
-    background-color: #66bb6a;
+    background-color: #1e88e5;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
@@ -139,7 +140,7 @@
 }
 
 .upload-btn:hover {
-    background-color: #43a047;
+    background-color: #4096e1;
 }
 
 #document-upload {

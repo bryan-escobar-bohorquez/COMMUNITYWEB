@@ -12,33 +12,48 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Función que busca servicios comparando el texto ingresado con los títulos o descripciones
   function buscarServicios() {
-    // Se convierte el texto ingresado a minúsculas para hacer la búsqueda sin importar mayúsculas
     const filtro = campoBusqueda.value.toLowerCase();
 
-    // Se revisa cada tarjeta para ver si coincide con la búsqueda
     tarjetas.forEach(servicio => {
-      // Se obtiene el título de la tarjeta y se pasa a minúsculas
       const titulo = servicio.querySelector('h3').textContent.toLowerCase();
-
-      // Se obtiene la descripción de la tarjeta y también se pasa a minúsculas
       const descripcion = servicio.querySelector('p').textContent.toLowerCase();
 
-      // Si el título o la descripción contienen el texto buscado, se muestra la tarjeta
       if (titulo.includes(filtro) || descripcion.includes(filtro)) {
-        servicio.style.display = "block"; // mostrar
+        servicio.style.display = "block";
       } else {
-        servicio.style.display = "none"; // ocultar
+        servicio.style.display = "none";
       }
     });
   }
 
-  // Se ejecuta la búsqueda cuando el usuario hace clic en el botón
+  // Se ejecuta la búsqueda al hacer clic o presionar Enter
   botonBusqueda.addEventListener("click", buscarServicios);
-
-  // También se ejecuta la búsqueda si el usuario presiona Enter dentro del campo de búsqueda
   campoBusqueda.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       buscarServicios();
     }
   });
+
+  // ========== CERRAR SESIÓN ==========
+  const botonCerrarSesion = document.querySelector(".cerrar-sesion button");
+
+  const cerrarSesionBtn = document.querySelector(".cerrar-sesion");
+
+  if (cerrarSesionBtn) {
+    cerrarSesionBtn.addEventListener("click", () => {
+    localStorage.removeItem("logueado");
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+
+    // Impide regresar con botón atrás
+    history.pushState(null, "", location.href);
+    window.addEventListener("popstate", () => {
+      history.pushState(null, "", location.href);
+    });
+
+    // Redirige al login
+    window.location.href = "menuP.html";
+  });
+}
+
 });

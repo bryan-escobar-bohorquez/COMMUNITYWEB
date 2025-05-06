@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRABAJOS</title>
+
+    <link rel="stylesheet" href="candidatos.css">
+    <link rel="stylesheet" href="aplicaciones.css">
+    <script src="candidatos.js"></script>
+    <script src="aplicaciones.js"></script>
+</head>
+
+
+
+
+<body>
+
+    <nav class="navbar">
+      <ul class="nav-menu">
+
+         
+          <li class="nav-item"><a href="miperfil.html" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="informacion.html" class="nav-link">Información</a></li>
+          <li class="nav-item"><a href="trabajos.html" class="nav-link">Trabajos</a></li> 
+          
+      </ul>
+  </nav>
+
+
+
+
+
+
+    <!-- Panel Principal de Trabajos y Candidatos -->
+<section class="seccion-trabajos">
+    <div class="trabajos-container">
+      <h1 class="titulo-seccion">Mis Trabajos Publicados</h1>
+      
+      <!-- Filtros -->
+      <div class="filtros-trabajos">
+        <select id="filtroEstado" class="selector-filtro">
+          <option value="todos">Todos los estados</option>
+          <option value="activo">Activos</option>
+          <option value="cerrado">Cerrados</option>
+        </select>
+      </div>
+      
+      <!-- Lista de Trabajos -->
+      <div id="listaTrabajosCandidatos" class="trabajos-list">
+        <!-- Los trabajos se cargarán aquí dinámicamente -->
+      </div>
+    </div>
+  </section>
+  
+  <!-- Panel Lateral de Candidatos -->
+  <div id="panelCandidatos" class="panel-lateral">
+    <div class="panel-header">
+      <button id="cerrarPanelCandidatos" class="cerrar-panel"><i class="fas fa-times"></i></button>
+      <h2 id="tituloTrabajoPanel"></h2>
+      <p id="infoTrabajoPanel"></p>
+    </div>
+    
+    <div class="panel-contenido">
+      <div class="filtros-panel">
+        <select id="filtroEstadoCandidato" class="selector-filtro">
+          <option value="todos">Todos los estados</option>
+          <option value="postulado">Postulado</option>
+          <option value="revision">En revisión</option>
+          <option value="entrevista">Entrevista</option>
+          <option value="contratado">Contratado</option>
+        </select>
+      </div>
+      
+      <div id="listaCandidatosPanel" class="lista-candidatos">
+        <!-- Los candidatos se cargarán aquí dinámicamente -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Panel de Detalle de Candidato -->
+  <div id="panelDetalleCandidato" class="panel-detalle">
+    <div class="detalle-header">
+      <button id="cerrarDetalleCandidato" class="cerrar-panel"><i class="fas fa-times"></i></button>
+      <div class="candidato-header-info">
+        <div class="candidato-avatar">
+          <img id="detalleCandidatoAvatar" src="" alt="Avatar">
+        </div>
+        <div>
+          <h2 id="detalleCandidatoNombre"></h2>
+          <p id="detalleCandidatoEstado" class="estado-badge"></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="detalle-content">
+      <div class="detalle-seccion">
+        <h3>Información Básica</h3>
+        <div class="detalle-grid">
+          <div>
+            <p><strong>Email:</strong> <span id="detalleCandidatoEmail"></span></p>
+            <p><strong>Teléfono:</strong> <span id="detalleCandidatoTelefono"></span></p>
+          </div>
+          <div>
+            <p><strong>Puesto:</strong> <span id="detalleCandidatoPuesto"></span></p>
+            <p><strong>Postulación:</strong> <span id="detalleCandidatoFecha"></span></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="detalle-seccion">
+        <h3>Documentos</h3>
+        <a id="detalleCandidatoCV" class="btn-ver-cv" target="_blank">
+          <i class="fas fa-file-pdf"></i> Ver CV
+        </a>
+      </div>
+      
+      <div class="detalle-seccion">
+        <h3>Notas</h3>
+        <textarea id="detalleCandidatoNotas" class="textarea-notas" placeholder="Agrega notas sobre este candidato..."></textarea>
+        <button id="guardarNotasCandidato" class="btn-guardar">
+          <i class="fas fa-save"></i> Guardar Notas
+        </button>
+      </div>
+    </div>
+  </div>
+    <!-- ============================================= -->
+<!-- SECCIÓN PRINCIPAL DE TRABAJOS APLICADOS -->
+<!-- ============================================= -->
+<section class="seccion-trabajos">
+  <div class="trabajos-aplicados-container">
+      <h2 class="titulo-seccion">Trabajos Aplicados</h2>
+      
+      <!-- Filtros -->
+      <div class="filtros-trabajos">
+          <label for="filtro-estado">Filtrar por estado:</label>
+          <select id="filtro-estado" class="selector-filtro">
+              <option value="todos">Todos los estados</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="revision">En revisión</option>
+              <option value="aceptado">Aceptado</option>
+              <option value="rechazado">Rechazado</option>
+          </select>
+      </div>
+      
+      <!-- Lista de trabajos -->
+      <div class="trabajos-list" id="trabajosList">
+          <!-- Los trabajos se renderizarán aquí dinámicamente -->
+      </div>
+      
+      <!-- Mensaje cuando no hay resultados -->
+      <div class="sin-resultados" id="sinResultados">
+          <p>No has aplicado a ningún trabajo aún.</p>
+          
+      </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- PANEL DE DETALLES (oculto inicialmente) -->
+<!-- ============================================= -->
+<div id="overlay" class="overlay"></div>
+
+<div id="detalleTrabajoPanel" class="detalle-panel">
+  <div class="detalle-contenido">
+      <!-- Encabezado del panel -->
+      <div class="detalle-header">
+          <h2 id="detalleTitulo"></h2>
+          <button id="cerrarDetalle" class="cerrar-detalle" aria-label="Cerrar panel">&times;</button>
+      </div>
+      
+      <!-- Información básica -->
+      <div class="detalle-meta">
+          <div class="meta-item">
+              <span class="meta-etiqueta">Empresa:</span>
+              <span id="detalleEmpresa" class="meta-valor"></span>
+          </div>
+          <div class="meta-item">
+              <span class="meta-etiqueta">Fecha aplicación:</span>
+              <span id="detalleFecha" class="meta-valor"></span>
+          </div>
+          <div class="meta-item">
+              <span class="meta-etiqueta">Estado:</span>
+              <span id="detalleEstado" class="meta-valor estado-badge"></span>
+          </div>
+          <div class="meta-item">
+              <span class="meta-etiqueta">Salario:</span>
+              <span id="detalleSalario" class="meta-valor"></span>
+          </div>
+          <div class="meta-item">
+              <span class="meta-etiqueta">Ubicación:</span>
+              <span id="detalleUbicacion" class="meta-valor"></span>
+          </div>
+      </div>
+      
+      <!-- Descripción del puesto -->
+      <div class="detalle-seccion">
+          <h3 class="titulo-seccion-detalle">Descripción del puesto</h3>
+          <div id="detalleDescripcion" class="texto-seccion"></div>
+      </div>
+      
+      <!-- Requisitos -->
+      <div class="detalle-seccion">
+          <h3 class="titulo-seccion-detalle">Requisitos</h3>
+          <ul id="detalleRequisitos" class="lista-requisitos"></ul>
+      </div>
+      
+      <!-- Proceso de selección -->
+      <div class="detalle-seccion">
+          <h3 class="titulo-seccion-detalle">Proceso de selección</h3>
+          <div id="detalleProceso" class="texto-seccion"></div>
+      </div>
+      
+      <!-- Acciones -->
+      <div class="detalle-acciones">
+          <button id="contactarReclutador" class="btn-primario">
+              <i class="fas fa-envelope"></i> Contactar reclutador
+          </button>
+          <button id="cancelarAplicacion" class="btn-secundario">
+              <i class="fas fa-trash-alt"></i> Cancelar aplicación
+          </button>
+      </div>
+  </div>
+</div>
+  <!-- Formulario para publicar nuevos trabajos -->
+<div id="formPublicarTrabajo" class="formulario-container">
+    <h2 class="titulo-formulario">Publicar Nueva Oferta de Trabajo</h2>
+    
+    <form id="nuevoTrabajoForm" class="formulario-trabajo">
+      <div class="grupo-formulario">
+        <label for="tituloTrabajo">Título del Puesto*</label>
+        <input type="text" id="tituloTrabajo" required placeholder="Ej: Electricista Industrial">
+      </div>
+      
+      <div class="grupo-formulario">
+        <label for="empresaTrabajo">Empresa*</label>
+        <input type="text" id="empresaTrabajo" required placeholder="Ej: Energía Total">
+      </div>
+      
+      <div class="grupo-formulario">
+        <label for="fechaPublicacion">Fecha de Publicación*</label>
+        <input type="date" id="fechaPublicacion" required>
+      </div>
+      
+      <div class="grupo-formulario">
+        <label for="salarioTrabajo">Salario</label>
+        <input type="text" id="salarioTrabajo" placeholder="Ej: $3,000 - $3,800">
+      </div>
+      
+      <div class="grupo-formulario">
+        <label for="ubicacionTrabajo">Ubicación</label>
+        <input type="text" id="ubicacionTrabajo" placeholder="Ej: Planta Norte">
+      </div>
+      
+      <div class="grupo-formulario">
+        <label for="descripcionTrabajo">Descripción del Puesto*</label>
+        <textarea id="descripcionTrabajo" required rows="4" placeholder="Describa las responsabilidades del puesto..."></textarea>
+      </div>
+      
+      <div class="grupo-formulario">
+        <label>Requisitos (separados por comas)</label>
+        <textarea id="requisitosTrabajo" rows="3" placeholder="Ej: Certificación en electricidad industrial, 3+ años de experiencia..."></textarea>
+      </div>
+      
+      <div class="grupo-formulario">
+        <label for="etapaActual">Etapa Actual del Proceso</label>
+        <input type="text" id="etapaActual" placeholder="Ej: Revisión inicial">
+      </div>
+      
+      <div class="grupo-formulario">
+        <label for="proximoPasoTrabajo">Próximo Paso</label>
+        <input type="text" id="proximoPasoTrabajo" placeholder="Ej: Prueba técnica">
+      </div>
+      
+      <div class="grupo-formulario">
+        <label for="contactoTrabajo">Contacto*</label>
+        <input type="email" id="contactoTrabajo" required placeholder="Ej: rrhh@empresa.com">
+      </div>
+      
+      <div class="acciones-formulario">
+        <button type="submit" class="btn-publicar">Publicar Trabajo</button>
+        <button type="button" id="cancelarPublicacion" class="btn-cancelar">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+ 
+
+  
+  <!-- Botón flotante para abrir formulario -->
+  <button id="abrirFormularioTrabajo" class="btn-flotante">
+    <i class="fas fa-plus"></i> Publicar Trabajo
+  </button>
+  
+  <div id="overlayCandidatos" class="overlay"></div>
+    
+</body>
+</html>

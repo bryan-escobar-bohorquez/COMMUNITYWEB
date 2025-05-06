@@ -139,7 +139,153 @@ function setupEventListeners() {
             removeFromCart(id);
         }
     });
+    // Agrega esto en tu función setupEventListeners()
+    document.getElementById('searchBtn').addEventListener('click', toggleSearch);
+    document.getElementById('searchInput').addEventListener('input', buscarProductos);
+    function toggleSearch() {
+        const searchInput = document.getElementById('searchInput');
+        searchInput.classList.toggle('hidden');
+        if (!searchInput.classList.contains('hidden')) {
+        searchInput.focus();
+        }
+    }
+    
+    async function buscarProductos(e) {
+        const termino = e.target.value.trim();
+        const contenedor = document.querySelector('.products-grid'); // Asegúrate que esta clase sea correcta
+        
+        if (!termino) {
+            loadProducts(); // Función que carga todos los productos
+            return;
+        }
+    
+        contenedor.innerHTML = '<p class="loading">Buscando...</p>';
+        
+        try {
+            const response = await fetch(`/api/productos/buscar?termino=${encodeURIComponent(termino)}`);
+            const productos = await response.json();
+            
+            contenedor.innerHTML = '';
+            
+            if (productos.length === 0) {
+                contenedor.innerHTML = '<p class="no-results">No se encontraron resultados</p>';
+                return;
+            }
+            
+            productos.forEach(p => {
+                const card = createProductCard(p);
+                contenedor.appendChild(card);
+            });
+            
+        } catch (err) {
+            console.error("Error en búsqueda:", err);
+            contenedor.innerHTML = '<p class="error">Error al buscar productos</p>';
+        }
+    }
+    // Search functionality
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    
+    searchBtn.addEventListener('click', toggleSearch);
+    searchInput.addEventListener('input', debounce(buscarProductos, 300));
+    
+    // Checkout button
+    checkoutBtn.addEventListener('click', finalizarCompra);
 }
+
+function toggleSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.classList.toggle('hidden');
+    if (!searchInput.classList.contains('hidden')) {
+        searchInput.focus();
+    } else {
+        // Clear search and show all products
+        searchInput.value = '';
+        loadProducts();
+    }
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function() {
+        const context = this, args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+}
+
+/*async function buscarProductos(e) {
+    const termino = e.target.value.trim();
+    
+    if (!termino) {
+        loadProducts();
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/productos/buscar?termino=${encodeURIComponent(termino)}`);
+        const productos = await response.json();
+        
+        const container = document.querySelector('.products-grid');
+        container.innerHTML = '';
+        
+        if (productos.mensaje || productos.length === 0) {
+            container.innerHTML = '<p class="no-results">No se encontraron resultados</p>';
+            return;
+        }
+        
+        productos.forEach(p => {
+            const card = createProductCard(p);
+            container.appendChild(card);
+        });
+        
+    } catch (err) {
+        console.error("Error en búsqueda:", err);
+    }
+}*/
+
+async function finalizarCompra() {
+    if (parseInt(cartCountElement.textContent) === 0) {
+        showAddedToCartMessage('Tu carrito está vacío', true);
+        return;
+    }
+    
+    if (!confirm('¿Confirmar compra?')) return;
+    
+    checkoutBtn.disabled = true;
+    checkoutBtn.innerHTML = "Procesando... <i class='bx bx-loader bx-spin'></i>";
+    
+    try {
+        const response = await fetch('/api/carrito/finalizar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        if (!response.ok) throw new Error('Error en la respuesta del servidor');
+        
+        const data = await response.json();
+        
+        // Update UI
+        cartItems.innerHTML = '<p class="empty-cart">¡Compra realizada con éxito!</p>';
+        totalPrice.textContent = '$0 COP';
+        cartCountElement.textContent = '0';
+        
+        // Show confirmation
+        showAddedToCartMessage(`Compra #${data.ordenId} realizada. Total: $${data.total.toLocaleString()} COP`);
+        
+        // Close cart after delay
+        setTimeout(toggleCart, 2000);
+        
+    } catch (err) {
+        console.error("Error al finalizar compra:", err);
+        showAddedToCartMessage('Error al finalizar la compra', true);
+    } finally {
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = 'Finalizar Compra';
+    }
+}
+
+///
 
 // Añadir al carrito (POST /carrito)
 function addToCart(productId) {
@@ -356,7 +502,7 @@ function checkout() {
         return;
     }
 
-    if (!confirm('¿Confirmar compra?')) return;
+    //if (!confirm('¿Confirmar compra?')) return;
 
     checkoutBtn.disabled = true;
     checkoutBtn.innerHTML = "Procesando... <i class='bx bx-loader bx-spin'></i>";

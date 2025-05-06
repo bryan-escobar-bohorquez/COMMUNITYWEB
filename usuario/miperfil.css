@@ -273,7 +273,11 @@ body {
     margin-top: 20px;
 }
 
+/* Botón para agregar foto - Ahora fijo en la parte superior de la galería */
 .boton-agregar {
+    position: sticky; /* Se mantiene fijo dentro de su contenedor */
+    top: 40px;       /* Se pega 60px desde arriba (debajo de la navbar) */
+    margin: 20px auto;
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -282,28 +286,71 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s;
+    z-index: 100;    /* Z-index menor que la navbar (1000) pero mayor que las fotos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: block;  /* Para que ocupe su propia línea */
+    width: max-content; /* Ancho según su contenido */
 }
 
 .boton-agregar:hover {
     background-color: #45a049;
     transform: translateY(-2px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Ajustamos el contenedor de la galería para que el sticky funcione */
+.galeria {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    position: relative; /* Necesario para que sticky funcione correctamente */
 }
 
 /* ============================================= */
 /* SECCIÓN DE CONTACTO */
 /* ============================================= */
 
+/* Barra de contacto inicialmente oculta */
 .contacto {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f4f4f4;
-    padding: 20px;
-    border-radius: 5px;
+    background: #808080;
+    padding: 1px;
+    border-radius: 5px 5px 0 0; /* Bordes redondeados solo arriba */
     font-size: 18px;
     gap: 50px;
+    position: fixed;
+    bottom: -100px; /* Comienza oculta */
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    transition: bottom 0.4s ease-out;
+    box-shadow: 0 -2px 15px rgba(0,0,0,0.15);
 }
+
+/* Clase que mostrará la barra */
+.contacto.visible {
+    bottom: 0; /* Se muestra */
+}
+
+/* Estilo del texto de copyright */
+.contacto p {
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .contacto {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
 
 /* ============================================= */
 /* NOTIFICACIONES */
